@@ -3,6 +3,8 @@ class AdditionalInformation{
         constructor(){
            this.page=page
 
+           console.log("Hello")
+
            this.amlQuestion1Yes=page.locator('[name="aml__general__question1"][value="YES"]')
            this.amlQuestion1No=page.locator('[name="aml__general__question1"][value="NO"]')
            this.amlQuestion1Na=page.locator('[name="aml__general__question1"][value="NA"]')
