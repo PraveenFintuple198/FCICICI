@@ -77,7 +77,7 @@ class FPIRegistrationDetails{
             this.priorAssociatedSebiRegisterNumber=page.locator('#caf__FPI_registration_information--prior_association_details__registered_as')
 
     
-            this.submit=page.locator('[name="proceed"]')
+            this.submit=page.locator('[name="submit"]')
 
       }
 

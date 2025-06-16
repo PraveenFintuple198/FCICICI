@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import InternalUserLoginPage from '../pageobjects/InternalUserLogin';
-import RelatedParties from '../pageobjects/relatedParties';
-import FpiRegistrationDetails from '../pageobjects/FPIRegistrationDetails';
-import AnnexureToCaf from '../pageobjects/AnnexureToCaf';
+import InternalUserLoginPage from '../../pageobjects/InternalUserLogin';
+import RelatedParties from '../../pageobjects/relatedParties';
+import FpiRegistrationDetails from '../../pageobjects/FPIRegistrationDetails';
+import AnnexureToCaf from '../../pageobjects/AnnexureToCaf';
 
 test('fillApplication',async({page})=>{
 

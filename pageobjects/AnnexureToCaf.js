@@ -50,7 +50,7 @@ class AnnexureToCaf{
         this.countryCode=page.locator('#countryCode')
         this.mobailNumber=page.locator('#annexure_to_caf3__fpi_wish_kras_to_seek_consent_prior_to_permitting_any_intermediary_to_download_their_kyc_information_if_yes__mobile_number')
         
-        this.submit=page.locator('[name="proceed"]')
+        this.submit=page.locator('[name="submit"]')
         
     }
 

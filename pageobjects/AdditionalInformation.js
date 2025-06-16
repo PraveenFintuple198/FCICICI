@@ -129,22 +129,35 @@ class AdditionalInformation{
            this.iBAN=this.page.locator('#beneficiary____iban')
 
 
-           this.beneficiaryTaxName=page.locator('#beneficiary____tax_name')
-           this.taxConsultantAddLine1=page.locator('#addOfTaxConsultant1')
-           this.taxConsultantAddLine2=page.locator('#addOfTaxConsultant2')
-           this.taxConsultantAddLine3=page.locator('#addOfTaxConsultant3')
-           this.taxConsultantPincode=page.locator('#taxConsultantPincode')
-           this.taxConsultantCity=page.locator('taxConsultantCityTown')
-           this.taxConsultantState=page.locator('taxConsultantState')
-           this.tacConsultantCountryName=page.locator('#taxConsultantCountryName')
-           this.taxConsultantCountryCode=page.locator('#taxConsultantCountryCode')
-           this.taxConsultantEmailId=page.locator('#beneficiary____emailid')
+           this.beneficiaryTaxName=this.page.locator('#beneficiary____tax_name')
+           this.taxConsultantAddLine1=this.page.locator('#addOfTaxConsultant1')
+           this.taxConsultantAddLine2=this.page.locator('#addOfTaxConsultant2')
+           this.taxConsultantAddLine3=this.page.locator('#addOfTaxConsultant3')
+           this.taxConsultantPincode=this.page.locator('#taxConsultantPincode')
+           this.taxConsultantCity=this.page.locator('taxConsultantCityTown')
+           this.taxConsultantState=this.page.locator('taxConsultantState')
+           this.tacConsultantCountryName=this.page.locator('#taxConsultantCountryName')
+           this.taxConsultantCountryCode=this.page.locator('#taxConsultantCountryCode')
+           this.taxConsultantEmailId=this.page.locator('#beneficiary____emailid')
            this.taxConsultantNameOfContactPerson=this.page.locator('#beneficiary____contact_person')
-           this.
+
+
+           this.addCustodianReceiveEmail=this.page.locator('[class="fa-square-plus"]:nth-of-type(1)')
+           this.CustodianReceiveEmailName=this.page.locator('#email_authorization_letter__ICICI_email_receive_configuration__name')
+           this.CustodianReceiveEmailDesignation=this.page.locator('#email_authorization_letter__ICICI_email_receive_configuration__designation')
+           this.CustodianReceiveEmailAS=this.page.locator('#authorisedSignatory')
+           this.emailOfCustodianReceiveEmail=this.locator('#email_authorization_letter__ICICI_email_receive_configuration__email')
+           this.remarks=this.locator('#remarks')
+        
+
+           this.investorReceiveEmail=this.page.locator('[class="fa-square-plus"]:nth-of-type(2)')
+           this.investorReceiveEmailName=this.locator('#email_authorization_letter__ICICI_email_send_configuration__name')
+           this.investorReceiveEmailDesignation=this.locator('#email_authorization_letter__ICICI_email_send_configuration__designation')
+           this.investor
 
 
 
-           this.submit=page.locator('[name="proceed"]')
+           this.submit=page.locator('name="submit"')
 
 
 
