@@ -4,6 +4,8 @@ import ApplicationFilling from '../../pageobjects/applicationFilling';
 import RelatedParties from '../../pageobjects/relatedParties';
 import FpiRegistrationDetails from '../../pageobjects/FPIRegistrationDetails';
 import AnnexureToCaf from '../../pageobjects/AnnexureToCaf';
+import AdditionalInformation from '../../pageobjects/AdditionalInformation';
+
 
 
 test('createApplication',async({page})=>{
@@ -19,17 +21,22 @@ test('createApplication',async({page})=>{
      await createApplication.createNewApplication()
     
       await new Promise(resolve => setTimeout(resolve, 5000));
-      await createApplication.InvestorDetails("Test Application Filling")
-      await createApplication.NoPanFlowAndRepresentativeNo() 
-      await createApplication.InvestorKYC()
-      //await page.pause()
+      await createApplication.InvestorDetails("Add Low risk country")
+      await page.pause()
+      await createApplication.yesPanFlow()
+      //await createApplication.NoPanFlowAndRepresentativeNo() 
+      //await createApplication.InvestorKYC()
+      await page.pause()
+       await createApplication.InvestorKYCYesPan()
+       await createApplication.incomeDetails()
+      await page.pause()
       const relatedParties = new RelatedParties(page)
 
-      //await page.pause()
+      await page.pause()
 
        await relatedParties.goToRP()
        await relatedParties.createIndvialUBO("peter")
-      // await page.pause()
+       await page.pause()
        await relatedParties.addRP()
        await relatedParties.createNonIndividualUBO('jhon show')
 
@@ -47,6 +54,12 @@ test('createApplication',async({page})=>{
         await annexToCaf.goToAnnexureToCafSecton()
        // await page.pause()
         await annexToCaf.annexureToCaf()
+
+         const additionalInformation=new AdditionalInformation(page)
+        await additionalInformation.goToAdditionalInformation()
+        await additionalInformation.aml()
+        await page.pause()
+        await additionalInformation.additionalDetails()
 
     
 })

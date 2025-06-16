@@ -21,7 +21,12 @@ class ApplicationFilling{
       
             //PAN Details
               this.panDetails=page.getByRole('tab', { name: 'PAN Details' })
-               this.yesPan=page.locator('[name="caf__additional_information_for_obtaining_pan--pan_already_hold__pancheck"][value="yes"]')
+              this.yesPan=page.locator('[name="caf__additional_information_for_obtaining_pan--pan_already_hold__pancheck"][value="yes"]')
+
+            //Yes PAN
+              this.PANField=page.locator('#caf__additional_information_for_obtaining_pan--pan_already_hold__pan_number')
+              this.pandateOfIncorpration=page.locator('#caf__KYC_Information__date_of_incorporation')    
+              this.confirmPAN=page.locator('')    
 
             //No Pan Flow
                
@@ -135,15 +140,29 @@ class ApplicationFilling{
                console.log(`userName: ${investorName}`)
               await this.InvestorNamesearch.fill(investorName)
               await this.searchInvestorButton.click()
-              await new Promise(resolve => setTimeout(resolve, 8000));
+              await new Promise(resolve => setTimeout(resolve, 10000));
+              await this.page.pause()
 
               await this.ProceedInvestorButton.click()
 
             }
+            async yesPanFlow(){
+               await this.panDetails.click()
+               await this.yesPan.click()
+               await this.PANField.fill('MHFIN0906G')
+               await this.pandateOfIncorpration.fill('2025-05-01')
+               await this.ProceedButton.click()
+               await this.KycTab.click()
+               await this.ProceedButton.click()
 
+              
+
+
+               
+            }
             async NoPanFlowAndRepresentativeNo(){
                
-              await this.page.pause()
+              
               await this.panDetails.click()
               await this.noPan.click()
               await this.statuOfApplicant.selectOption("Association of Persons")
@@ -181,7 +200,7 @@ class ApplicationFilling{
                 await this.sameAsAbove.click()
                 await this.OffName.fill('OfficeName')
                 await this.addrssOfCommResidence.click()
-                await this.contactFaxNumber.fill('')
+                await this.contactFaxNumber.fill('1234567')
                 await this.contactEmail.fill('Test@gmail.com')
                 await this.website.fill('test.com')
                 await this.residenceCountryCode.selectOption('Faroe Islands (+298)')
@@ -193,6 +212,44 @@ class ApplicationFilling{
                 
                 await this.ProceedButton.click()
 
+               }
+               async InvestorKYCYesPan(){
+                  
+               await this.KycTab.click()
+                await this.EditKYC.click()
+                await this.AbbrivativeName.fill('test')
+                await this.otherNameYes.click()
+                await this.specifyName.fill("test")
+                
+                await this.dateOfCommencement.fill('2025-04-10')
+                await this.PlaceOfIncorporation.fill('Chennai')
+                await this.RegisterNumber.fill('12345')
+                await this.taxResidenceCertificateNumber.fill('1234')
+                await this.countryOfTaxResidence.selectOption('Albania')
+                await this.proofOfIdentity.selectOption('Registration Certificate')
+                await this.proofOfIdentityNumber.fill('12345')
+                await this.proofofAddress.selectOption('Certificate of Incorporation/Formation')
+                await this.resAddLine1.fill('Autofill Add Line 1')
+                await this.resAddLine2.fill('Auto Fill Add Line 2')
+                await this.resAddLine3.fill('Line 3')
+                await this.resPinCode.fill('600002')
+                await this.resCity.fill('hydrabad')
+                await this.resState.fill('Punjab')
+                await this.resCountryName.selectOption('Antarctica')
+                await this.sameAsAbove.click()
+                await this.OffName.fill('OfficeName')
+                await this.addrssOfCommResidence.click()
+                await this.contactFaxNumber.fill('')
+                await this.contactEmail.fill('Test@gmail.com')
+                await this.website.fill('test.com')
+                await this.residenceCountryCode.selectOption('Faroe Islands (+298)')
+                await this.residenceAreaCode.fill('1234567')
+                await this.residenceTelephoneNumber.fill('765432')
+                await this.offCountryCode.selectOption('Faroe Islands (+298)')
+                await this.offStdCode.fill('123456')
+                await this.offTelephoneNumber.fill('12345678')
+                
+                await this.ProceedButton.click()
                }
 
                async incomeDetails(){
