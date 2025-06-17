@@ -243,7 +243,11 @@ class AdditionalInformation{
            this.CRDTab=page.getByRole('tab', { name: 'CRS Self certification form' })   
           //Information of the entity opening account with ICICI Bank
            this.CustomerID=page.locator('#fatca_self_certification__section1__customer_id')
-           this.entityIdentificationType=page.locator('')
+           this.entityIdentificationType=page.locator('#fatca_self_certification__section1__entity_identification_type')
+           this.entityIdentificationNumber=page.locator('#fatca_self_certification__section1__entity_identification_no')
+           this.entityLiesUnderFE=page.locator('[name="entityCategoryCrs"][value="FE"]')
+           this.entityLiesUnderNFE=page.locator('[name="entityCategoryCrs"][value="NFE"]')
+
 
 
            this.submit=page.locator('[name="submit"]')
@@ -301,10 +305,12 @@ class AdditionalInformation{
          await this.amlQuestion17Yes.click()
          await this.amlQuestion18Yes.click()
          await this.amlQuestion19Yes.click()
-         await this.amlQuestion19Frequently.click()
+         await this.amlQuestion19Frequently.fill('12')
 
+         await this.page.pause()
 
          await this.submit.click()
+        
 
 
 
@@ -345,13 +351,13 @@ class AdditionalInformation{
           await this.taxConsultantEmailId.fill('testing@gmail.com')
           await this.taxConsultantNameOfContactPerson.fill('Tester')
 
-          await this.CustodianReceiveEmailName.fill('steve smith')
+          await this.CustodianReceiveEmailName.fill('stevesmith')
           await this.CustodianReceiveEmailDesignation.fill('tester')
           await this.CustodianReceiveEmailAS.selectOption('Yes')
           await this.emailOfCustodianReceiveEmail.fill('test@gmail.com')
 
           await this.investorReceiveEmailName.fill('david warner')
-          await this.investorReceiveEmailDesignation.fill('BA')
+          await this.investorReceiveEmailDesignation.fill('BAN')
           await this.investorEmailAs.selectOption('Yes')
           await this.emailOfInvestorReceiveEmail.fill('testing@gmail.com')
           
@@ -367,6 +373,7 @@ class AdditionalInformation{
 
 
          await this.submit.click()
+         
 
         }
 
