@@ -145,6 +145,7 @@ class AdditionalInformation{
            this.taxConsultantState=page.locator('#taxConsultantState')
            this.tacConsultantCountryName=page.locator('#taxConsultantCountryName')
            this.taxConsultantCountryCode=page.locator('#taxConsultantCountryCode')
+           this.taxConsultantPhoneNo=page.locator('#beneficiary____phone')
            this.taxConsultantEmailId=page.locator('#beneficiary____emailid')
            this.taxConsultantNameOfContactPerson=page.locator('#beneficiary____contact_person')
 
@@ -236,6 +237,7 @@ class AdditionalInformation{
             //Section B Consent
 
             this.consent=page.locator('[name="fatcaConsent"]')
+            this.confirmConsent=page.locator('button:has-text("Confirm")')
 
 
         //CRS self Certification
@@ -245,17 +247,50 @@ class AdditionalInformation{
            this.CustomerID=page.locator('#fatca_self_certification__section1__customer_id')
            this.entityIdentificationType=page.locator('#fatca_self_certification__section1__entity_identification_type')
            this.entityIdentificationNumber=page.locator('#fatca_self_certification__section1__entity_identification_no')
+
+           //Entity lies under which category? is Financial Entity
            this.entityLiesUnderFE=page.locator('[name="entityCategoryCrs"][value="FE"]')
-           this.entityLiesUnderNFE=page.locator('[name="entityCategoryCrs"][value="NFE"]')
+             //a. An entity is a U.S. financial institution is Yes
+                 this.USFinancialInstitutionYes=page.locator('[name="fatca_self_certification__section3__us_financial_institutionFE"][value="YES"]')
+                 this.TaxId=page.locator('#fatca_self_certification__section3__us_financial_institution__tin1')
+                 this.UsInstitutionGIIN=page.locator('#fatca_self_certification__section3__us_financial_institution__giin')
+            
+            //a. An entity is a U.S. financial institution is No
+                 this.USFinancialInstitutionNo=page.locator('[name="fatca_self_certification__section3__us_financial_institutionFE"][value="NO"]')
+                 this.FATCAclassification=page.locator('#fatca_self_certification__section3__us_financial_institution_no')
+                 
+
+            //Please provide the Global Intermediary Identification number
+                 this.selectGiin=page.locator('[name="globalIdentificationFE"][value="giin"]')
+                 this.giinNoTextBox=page.locator('#giinGlobalIdentification')
 
 
+                 this.selectOther=page.locator('[name="globalIdentificationFE"][value="other"]')
+                 this.selectOtherTextBox=page.locator('#otherGlobalIdentification')
+
+            //Entity lies under which category? is NFE 
+                 this.entityLiesUnderNFE=page.locator('[name="entityCategoryCrs"][value="NFE"]')
+                 //a) An entity incorporated and taxable in US (Specified US person) is Yes
+                 this.incorporatedAndTaxableInUsYes=page.locator('[name="fatca_self_certification__section2__specified_us_person"][value="YES"]')
+                 this.taxPayerId=page.locator('#fatca_self_certification__section2__specified_us_person_yes__tin1')
+
+                 //a) An entity incorporated and taxable in US (Specified US person) is No
+                 this.incorporatedAndTaxableInUsNo=page.locator('[name="fatca_self_certification__section2__specified_us_person"][value="NO"]')
+
+                 //b) An entity incorporated and taxable outside of India (other than US) is yes
+                 this.taxableOutsideIndiaYes=page.locator('[name="fatca_self_certification__section2__other_that_us"][value="YES"]')
+                 this.tinNumber=page.locator('#fatca_self_certification__section2__other_that_us_yes__tin1')
+                 this.tinIssueingCountry=page.locator('#fatca_self_certification__section2__tin_issuing_country')
+
+                 //b) An entity incorporated and taxable outside of India (other than US) is No
+                 this.taxableOutsideIndiaNo=page.locator('[name="fatca_self_certification__section2__other_that_us"][value="NO"]')
+
+
+                 //Declaration
+                 this.agreeConsent=page.locator('[name="consent"]')
 
            this.submit=page.locator('[name="submit"]')
            this.Edit=page.locator('#Edit')
-
-
-
-
 
         }
         async goToAdditionalInformation(){
@@ -348,6 +383,7 @@ class AdditionalInformation{
           await this.taxConsultantState.fill('tamil nadu')
           await this.tacConsultantCountryName.selectOption('Aland Islands')
           await this.taxConsultantCountryCode.selectOption('Algeria (+213)')
+          await this.taxConsultantPhoneNo.fill('9876543210')
           await this.taxConsultantEmailId.fill('testing@gmail.com')
           await this.taxConsultantNameOfContactPerson.fill('Tester')
 
@@ -373,11 +409,36 @@ class AdditionalInformation{
 
 
          await this.submit.click()
+
+       
          
 
         }
 
+        async FactaDetailSection(){
+            await this.FactaDetailsTab.click()
+            await this.sectionAQuestion1Yes.click()
+            await this.sectionAQuestion2No.click()
+            await this.sectionAQuestion3No.click()
+            await this.haveGIINYes.click()
+            await this.GIINno.fill('1234567890')
+            await this.sectionAQuestion4Yes.click()
+            await this.sectionAQuestion5Yes.click()
 
+            await this.partnershipHolding10PerYes.click()
+            await this.consent.click()
+            await this.confirmConsent.click()
+            await this.submit.click()
+
+
+         }
+         async crsSelfCertificate(){
+            await this.CRDTab.click()
+            await this.CustomerID.fill('12345678')
+            await this.entityIdentificationType.selectOption('T - Tax identification number')
+            await this.entityIdentificationNumber.fill('12345test')
+            await this.
+         }
 
 
 

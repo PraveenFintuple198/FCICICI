@@ -12,7 +12,7 @@ test('fillApplication',async({page})=>{
          await Login.validLogin("fc.app.rm01@fintuple.com","Icici@123")
          await Login.cardSelection("Foreign Application")
 
-       await page.getByText('FCNIFPN25061704').click()
+       await page.getByText('FCNIFPN25062007').click()
        
 
       //const relatedParties=new RelatedParties(page)
@@ -50,9 +50,12 @@ test('fillApplication',async({page})=>{
 
         const additionalInformation=new AdditionalInformation(page)
         await additionalInformation.goToAdditionalInformation()
-        await additionalInformation.aml()
         await page.pause()
-        await additionalInformation.additionalDetails()
+        await additionalInformation.FactaDetailSection()
+         
+        // await additionalInformation.additionalDetails()
+
+        
         
 
 
