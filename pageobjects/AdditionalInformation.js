@@ -242,7 +242,7 @@ class AdditionalInformation{
 
         //CRS self Certification
 
-           this.CRDTab=page.getByRole('tab', { name: 'CRS Self certification form' })   
+           this.CRSTab=page.getByRole('tab', { name: 'CRS Self certification form' })   
           //Information of the entity opening account with ICICI Bank
            this.CustomerID=page.locator('#fatca_self_certification__section1__customer_id')
            this.entityIdentificationType=page.locator('#fatca_self_certification__section1__entity_identification_type')
@@ -433,11 +433,15 @@ class AdditionalInformation{
 
          }
          async crsSelfCertificate(){
-            await this.CRDTab.click()
+            await this.CRSTab.click()
             await this.CustomerID.fill('12345678')
             await this.entityIdentificationType.selectOption('T - Tax identification number')
             await this.entityIdentificationNumber.fill('12345test')
-            await this.
+            await this.entityLiesUnderFE.click()
+            await this.USFinancialInstitutionYes.click()
+            await this.TaxId.fill('976543210')
+            await this.UsInstitutionGIIN.fill('12345678910')
+
          }
 
 
