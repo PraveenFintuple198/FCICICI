@@ -15,7 +15,7 @@ test('createApplication',async({page})=>{
           await Login.validLogin("fc.app.rm01@fintuple.com","Icici@456")
           await Login.cardSelection("Foreign Application")
         
-          const createApplication = new ApplicationFilling(page,expect)
+      const createApplication = new ApplicationFilling(page,expect)
 
 
      await createApplication.createNewApplication("FPI","CATEGORY II","D - PRIVATE LIMITED COMPANY")
@@ -35,32 +35,32 @@ test('createApplication',async({page})=>{
       //await page.pause()
             
 
-      // const relatedParties = new RelatedParties(page)
+      const relatedParties = new RelatedParties(page)
 
+      await page.pause()
+
+       await relatedParties.goToRP()
+       await relatedParties.createIndvialUBO("sumanth 2")
       // await page.pause()
+       await relatedParties.addRP()
+       await relatedParties.createNonIndividualUBO('harri 3')
+       await page.pause()
+       await relatedParties.addRP()
+       await relatedParties.createIndvialUBO('sumanth 4')
+       await relatedParties.addRP()
+       await relatedParties.createAccountOpening('Nihal 5')
+       await relatedParties.addRP()
+       await relatedParties.createOperations('qa test 6')
+       await relatedParties.addRP()
+       await relatedParties.createNonIndividualUBO('Mouna 7')
+       await relatedParties.addRP()
+       await relatedParties.createNonIndividualUBO('harini 8')
+       await relatedParties.addRP()
+       await relatedParties.createAccountOpening('Nihal 9')
 
-      //  await relatedParties.goToRP()
-      //  await relatedParties.createIndvialUBO("test yaswanth")
-      // // await page.pause()
-      //  await relatedParties.addRP()
-      //  await relatedParties.createNonIndividualUBO('test manav lalith')
-      //  await page.pause()
-      //  await relatedParties.addRP()
-      //  await relatedParties.createIndvialUBO('sumanth 10')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createAccountOpening('Nihal 15')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createOperations('bala test')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createNonIndividualUBO('Magash')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createNonIndividualUBO('hari 12')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createAccountOpening('vigenesh parth')
 
-         await page.pause()
 
-       //await new Promise(resolve => setTimeout(resolve, 10000));
+       await new Promise(resolve => setTimeout(resolve, 10000));
         const fpiRegistrationDetails=new FpiRegistrationDetails(page)
         await fpiRegistrationDetails.goToFPIRegistrationDetails()
         await fpiRegistrationDetails.investmentManagement()
@@ -82,7 +82,7 @@ test('createApplication',async({page})=>{
         //await page.pause()
         await additionalInformation.additionalDetails()
         //await page.pause()
-        //await additionalInformation.FactaDetailSection()
+        await additionalInformation.FactaDetailSection()
         //await page.pause()
         await additionalInformation.crsSelfCertificate()
         await additionalInformation.declaration()

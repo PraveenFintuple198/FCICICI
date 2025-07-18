@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
-import InternalUserLoginPage from '../../pageobjects/InternalUserLogin';
+import {test,expect} from '@playwright/test';
+import ExternalLogin from '../../pageobjects/ExternalLogin';
 import ApplicationFilling from '../../pageobjects/applicationFilling';
 import RelatedParties from '../../pageobjects/relatedParties';
 import FpiRegistrationDetails from '../../pageobjects/FPIRegistrationDetails';
@@ -10,18 +10,21 @@ import AdditionalInformation from '../../pageobjects/AdditionalInformation';
 
 test('createApplication',async({page})=>{
 
-      const Login = new InternalUserLoginPage(page)
-          await Login.goto("https://fc-dev.finwyze.com")
-          await Login.validLogin("fc.app.rm01@fintuple.com","Icici@456")
-          await Login.cardSelection("Foreign Application")
+    const login = new ExternalLogin(page)
+         await login.goto("https://custodydigitizationuat.icicibank.com/fc")
+         await login.validLogin("velmurugan1@yopmail.com","Fintuple@1")
+         await login.otpPage()
+         await login.goto("https://custodydigitizationuat.icicibank.com/fc")
         
-          const createApplication = new ApplicationFilling(page,expect)
+         await  login.cardSelection("Foreign Application")
+         
+ const createApplication = new ApplicationFilling(page,expect)
 
 
      await createApplication.createNewApplication("FPI","CATEGORY II","D - PRIVATE LIMITED COMPANY")
     
       
-      await createApplication.InvestorDetails("minnal")
+      await createApplication.InvestorDetails("velmurugan")
       // await page.pause()
       //await createApplication.yesPanFlow()
       await createApplication.NoPanFlowAndRepresentativeNo() 
@@ -35,32 +38,11 @@ test('createApplication',async({page})=>{
       //await page.pause()
             
 
-      // const relatedParties = new RelatedParties(page)
+      
 
-      // await page.pause()
 
-      //  await relatedParties.goToRP()
-      //  await relatedParties.createIndvialUBO("test yaswanth")
-      // // await page.pause()
-      //  await relatedParties.addRP()
-      //  await relatedParties.createNonIndividualUBO('test manav lalith')
-      //  await page.pause()
-      //  await relatedParties.addRP()
-      //  await relatedParties.createIndvialUBO('sumanth 10')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createAccountOpening('Nihal 15')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createOperations('bala test')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createNonIndividualUBO('Magash')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createNonIndividualUBO('hari 12')
-      //  await relatedParties.addRP()
-      //  await relatedParties.createAccountOpening('vigenesh parth')
 
-         await page.pause()
-
-       //await new Promise(resolve => setTimeout(resolve, 10000));
+       await new Promise(resolve => setTimeout(resolve, 10000));
         const fpiRegistrationDetails=new FpiRegistrationDetails(page)
         await fpiRegistrationDetails.goToFPIRegistrationDetails()
         await fpiRegistrationDetails.investmentManagement()
@@ -82,12 +64,10 @@ test('createApplication',async({page})=>{
         //await page.pause()
         await additionalInformation.additionalDetails()
         //await page.pause()
-        //await additionalInformation.FactaDetailSection()
+        await additionalInformation.FactaDetailSection()
         //await page.pause()
         await additionalInformation.crsSelfCertificate()
         await additionalInformation.declaration()
         
-
-
-    
 })
+
