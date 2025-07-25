@@ -12,7 +12,7 @@ test('createApplication',async({page})=>{
 
       const Login = new InternalUserLoginPage(page)
           await Login.goto("https://fc-dev.finwyze.com")
-          await Login.validLogin("fc.app.rm01@fintuple.com","Icici@456")
+          await Login.validLogin("fc.app.rm01@fintuple.com","Icici@123")
           await Login.cardSelection("Foreign Application")
         
           const createApplication = new ApplicationFilling(page,expect)
@@ -20,34 +20,24 @@ test('createApplication',async({page})=>{
 
      await createApplication.createNewApplication()
     
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      await createApplication.InvestorDetails("Low Risk Country Investor")
+      await new Promise(resolve => setTimeout(resolve, 5000));
+      await createApplication.InvestorDetails("Add Low risk country")
       await page.pause()
-      //await createApplication.yesPanFlow()
-      await createApplication.NoPanFlowAndRepresentativeNo() 
-      await createApplication.InvestorKYC()
+      
+      
       await page.pause()
-    //    await createApplication.InvestorKYCYesPan()
+       await createApplication.InvestorKYCYesPan()
        await createApplication.incomeDetails()
-    //   await page.pause()
-    //   const relatedParties = new RelatedParties(page)
+      await page.pause()
+      const relatedParties = new RelatedParties(page)
 
-    //   await page.pause()
+      await page.pause()
 
-    //    await relatedParties.goToRP()
-    //    await relatedParties.createIndvialUBO("peter")
-    //    await page.pause()
-    //    await relatedParties.addRP()
-    //    await relatedParties.createNonIndividualUBO('jhon show')
-    //     await page.pause()
-    //    await relatedParties.addRP()
-    //    await relatedParties.createIndvialUBO('investor individual UBO')
-    //    await relatedParties.addRP()
-    //    await relatedParties.createAccountOpening('investor test RP')
-    //    await relatedParties.addRP()
-    //    await relatedParties.createOperations('peter parker')
-    //    await relatedParties.addRP()
-    //    await relatedParties.createNonIndividualUBO('steve rogers')
+       await relatedParties.goToRP()
+       await relatedParties.createIndvialUBO("mercy")
+       await page.pause()
+       await relatedParties.addRP()
+       await relatedParties.createNonIndividualUBO('Tata')
 
         const fpiRegistrationDetails=new FpiRegistrationDetails(page)
         await fpiRegistrationDetails.goToFPIRegistrationDetails()
@@ -73,7 +63,7 @@ test('createApplication',async({page})=>{
         await additionalInformation.FactaDetailSection()
         await page.pause()
         await additionalInformation.crsSelfCertificate()
-        await additionalInformation.declaration()
+        await 
         
 
 

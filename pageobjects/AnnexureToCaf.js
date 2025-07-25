@@ -49,6 +49,22 @@ class AnnexureToCaf{
         this.downloadKYCEmail3=page.locator('#annexure_to_caf3__fpi_wish_kras_to_seek_consent_prior_to_permitting_any_intermediary_to_download_their_kyc_information_if_yes__email_id3')
         this.countryCode=page.locator('#countryCode')
         this.mobailNumber=page.locator('#annexure_to_caf3__fpi_wish_kras_to_seek_consent_prior_to_permitting_any_intermediary_to_download_their_kyc_information_if_yes__mobile_number')
+
+
+        //BO declaration
+        this.BoDeclarationYes=page.locator('[name="annexure_to_caf1__additional_information__If_segregated_portfolio_is_maintained_for_each_sub_funds_or_share_classes_equivalent_structures_of_the_applicant_names_of_such_sub_funds_or_share_classes_equivalent_structures_that_intend_to_invest_in_india_Does_the_applicant_maintain_Segregated_portfolio_for_each_sub_funds_or_share_classes_equivalent_structures"][value="YES"]')
+        this.BoDeclarationNo=page.locator('[name="annexure_to_caf1__additional_information__If_segregated_portfolio_is_maintained_for_each_sub_funds_or_share_classes_equivalent_structures_of_the_applicant_names_of_such_sub_funds_or_share_classes_equivalent_structures_that_intend_to_invest_in_india_Does_the_applicant_maintain_Segregated_portfolio_for_each_sub_funds_or_share_classes_equivalent_structures"][value="NO"]')
+         //to select Values in Table
+        this.addSubFunds=page.locator('i.fa-square-plus')
+        this.nameOfSubFund=page.locator('[name="annexure_to_caf2__bo_declaration__name_of_the_sub_fund_share_class_equivalent_structure_line"]')
+        this.addBODeclaration=page.locator('#boDeclaration')
+
+    //Question 1 in BO Declaration
+    //We declare that there is no natural person / individual who are ultimately holding >= 10% Beneficial Ownership directly/indirectly into the entity as well as on controlling basis for companies, Trust & General Partner/Limited Partnership structure. We therefore provide details of the senior managing official of the FPI as under.
+
+       this.Question1FirstRadoButton=page.locator('[value="WE_DECLARE_THAT_THERE_IS_NO_NATURAL_PERSON_INDIVIDUAL_WHO_ARE_ULTIMATELY_HOLDING_BENEFICIAL_OWNERSHIP_DIRECTLY_INDIRECTLY_INTO_THE_ENTITY_AS_WELL_AS_ON_CONTROLLING_BASIS_FOR_COMPANIES_TRUST_AND_GENERAL_PARTNER_LIMITED_PARTNERSHIP_STRUCTURE_WE_THEREFORE_PROVIDE_DETAILS_OF_THE_SENIOR_MANAGING_OFFICIAL_OF_THE_FPI_AS_UNDER"]')
+
+
         
         this.submit=page.locator('[name="submit"]')
         

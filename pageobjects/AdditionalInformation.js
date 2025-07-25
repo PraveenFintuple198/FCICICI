@@ -236,7 +236,7 @@ class AdditionalInformation{
 
             //Section B Consent
 
-            this.consent=page.locator('[name="fatcaConsent"]')
+            this.consent=page.getByText('Consent')
             this.confirmConsent=page.locator('button:has-text("Confirm")')
 
 
@@ -287,6 +287,7 @@ class AdditionalInformation{
 
 
                  //Declaration
+                 this.declarationTab=page.getByRole('tab', { name: 'Declarations' }) 
                  this.agreeConsent=page.locator('[name="consent"]')
 
            this.submit=page.locator('[name="submit"]')
@@ -419,7 +420,7 @@ class AdditionalInformation{
             await this.FactaDetailsTab.click()
             await this.sectionAQuestion1Yes.click()
             await this.sectionAQuestion2No.click()
-            await this.sectionAQuestion3No.click()
+            await this.sectionAQuestion3yes.click()
             await this.haveGIINYes.click()
             await this.GIINno.fill('1234567890')
             await this.sectionAQuestion4Yes.click()
@@ -441,6 +442,14 @@ class AdditionalInformation{
             await this.USFinancialInstitutionYes.click()
             await this.TaxId.fill('976543210')
             await this.UsInstitutionGIIN.fill('12345678910')
+            await this.submit.click()
+
+         }
+
+         async declaration(){
+            await this.declarationTab.click()
+            await this.agreeConsent.click()
+            await this.submit.click()
 
          }
 
