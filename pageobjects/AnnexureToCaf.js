@@ -90,7 +90,7 @@ class AnnexureToCaf {
         await this.downloadKYCEmail3.fill('testAutomation@gmail.com')
         await this.countryCode.selectOption('Angola (+244)')
         await this.mobailNumber.fill('7448400182')
-        await this.page.pause()
+        //await this.page.pause()
         await this.submit.click()
 
     }
@@ -101,6 +101,7 @@ class AnnexureToCaf {
         await this.entityTypeAsPerRegulation.last().selectOption('Private Limited Company')
     }
     async edit() {
+        await new Promise((resolve) => setTimeout(resolve, 10000));
         await this.page.waitForLoadState('networkidle');
         const editButton = this.page.locator('#Edit, button:has-text("Edit")');
         if (await editButton.isVisible({ timeout: 10000 })) {

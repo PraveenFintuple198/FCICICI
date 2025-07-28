@@ -18,7 +18,7 @@ test('createApplication',async({page})=>{
       const createApplication = new ApplicationFilling(page,expect)
 
 
-     await createApplication.createNewApplication("FPI","CATEGORY II","D - PRIVATE LIMITED COMPANY")
+     await createApplication.createNewApplication("FPI","CATEGORY II","B - PARTNERSHIP FIRM")
     
       
       await createApplication.InvestorDetails("minnal")
@@ -26,37 +26,32 @@ test('createApplication',async({page})=>{
       //await createApplication.yesPanFlow()
       await createApplication.NoPanFlowAndRepresentativeNo() 
       await createApplication.InvestorKYC()
-      //await page.pause()
-           
-
     //    await createApplication.InvestorKYCYesPan()
-
-      // await createApplication.incomeDetails()
+       
+      await createApplication.incomeDetails()
       //await page.pause()
             
 
       const relatedParties = new RelatedParties(page)
 
-      await page.pause()
+      await page.locator('text=This section contains Related Parties Information').waitFor({ state: 'visible', timeout: 100000 });
+ 
+        await relatedParties.edit()
+        await relatedParties.DeleteAllRP()
+        await relatedParties.addRP()
 
        await relatedParties.goToRP()
-       await relatedParties.createIndvialUBO("sumanth 2")
+       await relatedParties.createIndvialUBO("sumanth mmm", "LIMITED PARTNER")
       // await page.pause()
        await relatedParties.addRP()
-       await relatedParties.createNonIndividualUBO('harri 3')
-       await page.pause()
+       await relatedParties.createNonIndividualUBO('harkkk')
+       //await page.pause()
        await relatedParties.addRP()
-       await relatedParties.createIndvialUBO('sumanth 4')
+       await relatedParties.createIndvialUBO('sumannnn', 'LIMITED PARTNER')
        await relatedParties.addRP()
-       await relatedParties.createAccountOpening('Nihal 5')
-       await relatedParties.addRP()
-       await relatedParties.createOperations('qa test 6')
-       await relatedParties.addRP()
-       await relatedParties.createNonIndividualUBO('Mouna 7')
-       await relatedParties.addRP()
-       await relatedParties.createNonIndividualUBO('harini 8')
-       await relatedParties.addRP()
-       await relatedParties.createAccountOpening('Nihal 9')
+       
+       
+       await relatedParties.createAccountOpening('Nikll',"LIMITED PARTNER")
 
 
 

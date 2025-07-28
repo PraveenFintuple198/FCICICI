@@ -18,7 +18,7 @@ test('createApplication',async({page})=>{
           const createApplication = new ApplicationFilling(page,expect)
 
 
-     await createApplication.createNewApplication()
+     await createApplication.createNewApplication("FPI","CATEGORY I","D - PRIVATE LIMITED COMPANY")
     
       await new Promise(resolve => setTimeout(resolve, 5000));
       await createApplication.InvestorDetails("Add Low risk country")
@@ -26,10 +26,10 @@ test('createApplication',async({page})=>{
       await createApplication.yesPanFlow()
       //await createApplication.NoPanFlowAndRepresentativeNo() 
       //await createApplication.InvestorKYC()
-      await page.pause()
+      //await page.pause()
        await createApplication.InvestorKYCYesPan()
        await createApplication.incomeDetails()
-      await page.pause()
+      //await page.pause()
       const relatedParties = new RelatedParties(page)
 
       await page.pause()

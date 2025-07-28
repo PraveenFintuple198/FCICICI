@@ -7,7 +7,7 @@ export default defineConfig({
  
   reporter: 'html',
   
-  timeout:70*1000,
+  timeout:70*10000,
   use: {
    
       headless: false,

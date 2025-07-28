@@ -211,7 +211,7 @@ class ApplicationFilling {
       );
 
       //SourceOfIncome
-      this.incomeDetails=page.locator('')
+      //this.incomeDetails=page.locator('')
       this.sourceOfIncome = page.locator(
          "#caf__KYC_Information--income_details__source_of_income"
       );
@@ -371,19 +371,11 @@ class ApplicationFilling {
    }
 
    async incomeDetails() {
-
-      
-      if (await this.EditKYC.isVisible({ timeout: 5000 })) {
+     await new Promise((resolve) => setTimeout(resolve, 10000));
+     
       await this.EditKYC.click();
-    } else {
-      console.log("Edit button not present - skipping");
-    }
-
-  
-
-  
-
-  // Fill in form
+ // Fill in form
+ 
   await this.sourceOfIncome.selectOption("Capital Gains");
   await this.grossAnnualIncome.fill("12345");
   await this.netWorth.fill("456700");

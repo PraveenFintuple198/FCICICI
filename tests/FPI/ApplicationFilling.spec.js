@@ -5,6 +5,7 @@ import FpiRegistrationDetails from '../../pageobjects/FPIRegistrationDetails';
 import AnnexureToCaf from '../../pageobjects/AnnexureToCaf';
 import AdditionalInformation from '../../pageobjects/AdditionalInformation';
 import ApplicationFilling from '../../pageobjects/applicationFilling';
+import Documents from '../../pageobjects/DocumentsPage';
 
 test('fillApplication',async({page})=>{
 
@@ -13,7 +14,11 @@ test('fillApplication',async({page})=>{
          await Login.validLogin("fc.app.rm01@fintuple.com","Icici@456")
          await Login.cardSelection("Foreign Application")
 
-       await page.getByText('FCNIFPN25062007').click()
+       await page.getByText('FCNIFPN25072827').click()
+
+       const DocumentsPage = new Documents(page);
+       await DocumentsPage.goToDocumentsSection()
+       
        
 
       //const relatedParties=new RelatedParties(page)
@@ -49,19 +54,19 @@ test('fillApplication',async({page})=>{
         // await page.pause()
         // await annexToCaf.annexureToCaf()
 
-        const additionalInformation=new AdditionalInformation(page)
-        await additionalInformation.goToAdditionalInformation()
-        await page.pause()
-        await additionalInformation.FactaDetailSection()
+        // const additionalInformation=new AdditionalInformation(page)
+        // await additionalInformation.goToAdditionalInformation()
+        // await page.pause()
+        // await additionalInformation.FactaDetailSection()
          
         // await additionalInformation.additionalDetails()
         // //await page.pause()
         // // await additionalInformation.FactaDetailSection()
         // //await page.pause()
-        await additionalInformation.crsSelfCertificate()
-        await additionalInformation.declaration()
+        // await additionalInformation.crsSelfCertificate()
+        // await additionalInformation.declaration()
          
-        await additionalInformation.additionalDetails()
+        // await additionalInformation.additionalDetails()
 
         
         

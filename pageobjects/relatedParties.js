@@ -8,7 +8,11 @@ class RelatedParties {
     this.Edit = page.locator("#Edit");
     this.yesUBO = page.locator('[name="haveUbo"][value="yes"]');
     this.NoUBO = page.locator('[name="haveUbo"][value="no"]');
+    this.yesRemoveRP=page.getByRole('button', { name: 'Yes' })
+    this.noRemoveRP=page.getByRole('button', { name: 'No' })
     this.AddRelatedParties = page.getByRole("button", { name: "" });
+    
+    
     this.RPType = page.locator(
       "#annexure_to_caf3__information_regarding_intermediate_material_shareholder__a__individual_non_individual"
     );
@@ -108,27 +112,27 @@ class RelatedParties {
     await this.AddRelatedParties.click();
   }
 
-  async createIndvialUBO(RPName) {
+  async createIndvialUBO(RPName, designation) {
     await this.RPType.last().selectOption("Individual");
     await this.RPName.last().fill(RPName);
     await this.AsCheckBox.last().click();
     await this.UboCheckbox.last().click();
     await this.RPKyc.last().click();
-    await this.fillIndividualKyc();
+    await this.fillIndividualKyc(designation);
   }
-  async createOperations(RPName) {
+  async createOperations(RPName, designation) {
     await this.RPType.last().selectOption("Individual");
     await this.RPName.last().fill(RPName);
     await this.Operation.last().click();
     await this.RPKyc.last().click();
-    await this.fillIndividualKyc();
+    await this.fillIndividualKyc(designation);
   }
-  async createAccountOpening(RPName) {
+  async createAccountOpening(RPName,designation) {
     await this.RPType.last().selectOption("Individual");
     await this.RPName.last().fill(RPName);
     await this.AccountOpening.last().click();
     await this.RPKyc.last().click();
-    await this.fillIndividualKyc();
+    await this.fillIndividualKyc(designation);
   }
   async createNonIndividualUBO(RPName) {
     await this.RPType.last().selectOption("Non-Individual");
@@ -181,5 +185,22 @@ class RelatedParties {
     await this.rpPOAType.selectOption("Certificate of Incorporation/Formation");
     await this.RPKycProceed.click();
   }
+  async DeleteAllRP(){
+      await this.NoUBO.click()
+      await this.yesRemoveRP.click()
+      await this.yesUBO.click()
+ 
+  }
+  async edit() {
+    await this.page.locator('.text-description:has-text("This section contains Related Parties Information")')
+  .waitFor({ state: 'visible', timeout: 1000000 });
+    await this.page.waitForLoadState("networkidle");
+    if (await this.Edit.isVisible({ timeout: 5000 })) {
+      await this.Edit.click();
+    } else {
+      console.log("Edit button not present - skipping");
+    }
+  }
+
 }
 module.exports = RelatedParties;

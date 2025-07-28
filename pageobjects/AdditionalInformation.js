@@ -298,8 +298,9 @@ class AdditionalInformation{
           await this.AdditionalInformationSection.click()
         }
         async edit(){
+         await new Promise((resolve) => setTimeout(resolve, 10000));
          await this.page.waitForLoadState('networkidle');
-             if (await this.Edit.isVisible({ timeout: 10000 })) {
+             if (await this.Edit.isVisible({ timeout: 5000 })) {
                  await this.Edit.click();
                 } else {
             console.log('Edit button not present - skipping');
@@ -308,6 +309,7 @@ class AdditionalInformation{
 
         async aml(){
          await this.amlTab.click()
+         await new Promise((resolve) => setTimeout(resolve, 5000));
          await this.edit()
          await this.amlQuestion1Yes.click()
          await  this.amlQuestion2Yes.click()
@@ -343,7 +345,7 @@ class AdditionalInformation{
          await this.amlQuestion19Yes.click()
          await this.amlQuestion19Frequently.fill('12')
 
-         await this.page.pause()
+        // await this.page.pause()
 
          await this.submit.click()
         
@@ -354,9 +356,10 @@ class AdditionalInformation{
 
         async additionalDetails(){
           await this.additionalDetailsTab.click()
+          await new Promise((resolve) => setTimeout(resolve, 5000));
           await this.edit()
           await this.leiNumber.fill('12345678')
-          await this.expiryDate.fill('')
+          await this.expiryDate.fill('2025-05-01')
           await this.financialStatementYes.click()
           await this.joinlyBy.click()
           await this.specify.fill('testing')
@@ -418,6 +421,8 @@ class AdditionalInformation{
 
         async FactaDetailSection(){
             await this.FactaDetailsTab.click()
+            await new Promise((resolve) => setTimeout(resolve, 5000));
+            await this.edit()
             await this.sectionAQuestion1Yes.click()
             await this.sectionAQuestion2No.click()
             await this.sectionAQuestion3yes.click()
@@ -435,6 +440,8 @@ class AdditionalInformation{
          }
          async crsSelfCertificate(){
             await this.CRSTab.click()
+             await new Promise((resolve) => setTimeout(resolve, 5000));
+            await this.edit()
             await this.CustomerID.fill('12345678')
             await this.entityIdentificationType.selectOption('T - Tax identification number')
             await this.entityIdentificationNumber.fill('12345test')
@@ -448,6 +455,8 @@ class AdditionalInformation{
 
          async declaration(){
             await this.declarationTab.click()
+             await new Promise((resolve) => setTimeout(resolve, 5000));
+            await this.edit()
             await this.agreeConsent.click()
             await this.submit.click()
 
