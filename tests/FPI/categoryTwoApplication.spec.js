@@ -15,31 +15,52 @@ test('createApplication',async({page})=>{
           await Login.validLogin("fc.app.rm01@fintuple.com","Icici@456")
           await Login.cardSelection("Foreign Application")
         
-          const createApplication = new ApplicationFilling(page,expect)
+      const createApplication = new ApplicationFilling(page,expect)
 
 
-     await createApplication.createNewApplication()
+     await createApplication.createNewApplication("FPI","CATEGORY II","D - PRIVATE LIMITED COMPANY")
     
-      await new Promise(resolve => setTimeout(resolve, 5000));
-      await createApplication.InvestorDetails("Add Low risk country")
-      await page.pause()
-      await createApplication.yesPanFlow()
-      //await createApplication.NoPanFlowAndRepresentativeNo() 
-      //await createApplication.InvestorKYC()
-      await page.pause()
-       await createApplication.InvestorKYCYesPan()
-       await createApplication.incomeDetails()
-      await page.pause()
+      
+      await createApplication.InvestorDetails("minnal")
+      // await page.pause()
+      //await createApplication.yesPanFlow()
+      await createApplication.NoPanFlowAndRepresentativeNo() 
+      await createApplication.InvestorKYC()
+      //await page.pause()
+           
+
+    //    await createApplication.InvestorKYCYesPan()
+
+      // await createApplication.incomeDetails()
+      //await page.pause()
+            
+
       const relatedParties = new RelatedParties(page)
 
       await page.pause()
 
        await relatedParties.goToRP()
-       await relatedParties.createIndvialUBO("peter")
+       await relatedParties.createIndvialUBO("sumanth 2")
+      // await page.pause()
+       await relatedParties.addRP()
+       await relatedParties.createNonIndividualUBO('harri 3')
        await page.pause()
        await relatedParties.addRP()
-       await relatedParties.createNonIndividualUBO('jhon show')
+       await relatedParties.createIndvialUBO('sumanth 4')
+       await relatedParties.addRP()
+       await relatedParties.createAccountOpening('Nihal 5')
+       await relatedParties.addRP()
+       await relatedParties.createOperations('qa test 6')
+       await relatedParties.addRP()
+       await relatedParties.createNonIndividualUBO('Mouna 7')
+       await relatedParties.addRP()
+       await relatedParties.createNonIndividualUBO('harini 8')
+       await relatedParties.addRP()
+       await relatedParties.createAccountOpening('Nihal 9')
 
+
+
+       await new Promise(resolve => setTimeout(resolve, 10000));
         const fpiRegistrationDetails=new FpiRegistrationDetails(page)
         await fpiRegistrationDetails.goToFPIRegistrationDetails()
         await fpiRegistrationDetails.investmentManagement()
@@ -60,6 +81,13 @@ test('createApplication',async({page})=>{
         await additionalInformation.aml()
         //await page.pause()
         await additionalInformation.additionalDetails()
+        //await page.pause()
+        await additionalInformation.FactaDetailSection()
+        //await page.pause()
+        await additionalInformation.crsSelfCertificate()
+        await additionalInformation.declaration()
+        
+
 
     
 })
