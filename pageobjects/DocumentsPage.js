@@ -15,15 +15,14 @@ class Documents{
         await this.page.waitForLoadState('networkidle');
         await this.page.locator('text=Investor Documents').waitFor({ state: 'visible', timeout: 10000 });
     }
-    async uploadDocument(documentName) {
-        await this.page.locator(`text=${documentName}`).waitFor({ state: 'visible', timeout: 10000 });
-        const certRow = this.page.locator(`tr.border-b:has-text("${documentName}")`);
-        const actionButton = certRow.locator('td:nth-child(4) div.relative > button');
-        await actionButton.click();
-        const uploadOption = certRow.locator('td:nth-child(4) div.absolute > button');
-        await uploadOption.click();
-        const fileInput = this.page.locator('input[type="file"]');
-        await fileInput.setInputFiles('document (35) 3.pdf');
+    async uploadDocument() {
+        //await this.page.getByText(documentName, { exact: true }).waitFor({ state: 'visible', timeout: 10000 });
+         await this.page.getByRole('row', { name: 'CERTIFICATE PENDING', exact: true }).getByRole('button').nth(1).click();
+  await this.page.getByRole('row', { name: 'CERTIFICATE PENDING Upload' }).getByRole('button').nth(1).click();
+  await this.page.getByRole('button', { name: 'Upload' }).click(); 
+       
+        const fileInput = this.page.locator('input[@id="fileUploadDoc"]');
+        await fileInput.setInputFiles('sample document/sample.pdf');
     }
 
 

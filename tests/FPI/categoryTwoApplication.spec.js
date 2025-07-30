@@ -37,21 +37,21 @@ test('createApplication',async({page})=>{
       await page.locator('text=This section contains Related Parties Information').waitFor({ state: 'visible', timeout: 100000 });
  
         await relatedParties.edit()
-        await relatedParties.DeleteAllRP()
+       // await relatedParties.DeleteAllRP()
         await relatedParties.addRP()
 
        await relatedParties.goToRP()
-       await relatedParties.createIndvialUBO("sumanth mmm", "LIMITED PARTNER")
+       await relatedParties.createIndvialUBO("suiinmm", "LIMITED PARTNER")
       // await page.pause()
        await relatedParties.addRP()
        await relatedParties.createNonIndividualUBO('harkkk')
        //await page.pause()
        await relatedParties.addRP()
-       await relatedParties.createIndvialUBO('sumannnn', 'LIMITED PARTNER')
+       await relatedParties.createIndvialUBO('sumjj', 'LIMITED PARTNER')
        await relatedParties.addRP()
        
        
-       await relatedParties.createAccountOpening('Nikll',"LIMITED PARTNER")
+       await relatedParties.createAccountOpening('Niknnnmn',"LIMITED PARTNER")
 
 
 

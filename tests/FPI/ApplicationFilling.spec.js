@@ -14,11 +14,11 @@ test('fillApplication',async({page})=>{
          await Login.validLogin("fc.app.rm01@fintuple.com","Icici@456")
          await Login.cardSelection("Foreign Application")
 
-       await page.getByText('FCNIFPN25072827').click()
+       await page.getByText('FCNIFPN25072812').click()
 
        const DocumentsPage = new Documents(page);
        await DocumentsPage.goToDocumentsSection()
-       
+       await DocumentsPage.uploadDocument('REGISTRATIONCERTIFICATE')
        
 
       //const relatedParties=new RelatedParties(page)
